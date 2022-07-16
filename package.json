@@ -1,0 +1,14 @@
+{
+  "name": "ds-handler",
+  "version": "1.0.0",
+  "description": "Simple handler for discord.js V13",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DesConnet",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.8.1"
+  }
+}
