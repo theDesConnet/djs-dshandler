@@ -4,16 +4,16 @@ const Discord = require('discord.js');
 module.exports = new Button({
     buttonID: "testButton",
     async execute(client, interaction) {
-        const textInput = new Discord.TextInputComponent()
+        const textInput = new Discord.TextInputBuilder()
         .setLabel('testTextInput')
         .setCustomId('testInput')
-        .setStyle("SHORT")
+        .setStyle(Discord.TextInputStyle.Short)
         .setPlaceholder('Write here');
 
-        const actionRow = new Discord.MessageActionRow()
+        const actionRow = new Discord.ActionRowBuilder()
         .addComponents([textInput]);
 
-        const modal = new Discord.Modal()
+        const modal = new Discord.ModalBuilder()
         .setCustomId('testModal')
         .setTitle('Test modal')
         .addComponents([actionRow])

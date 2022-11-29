@@ -5,9 +5,9 @@ const Client = require('./client.js');
  * 
  * @param {Client} client 
  * @param {message.content.slice(config.prefix.length).trim().split(/ +/g)} args 
- * @param {Discord.CommandInteraction & Discord.Message} message 
+ * @param {Discord.CommandInteraction} interaction 
  */
-function ExecuteFuctions(client, args, message) { }
+function ExecuteFuctions(client, args, interaction) { }
 
 //Класс команды
 class Command {
