@@ -1,5 +1,5 @@
 const Event = require('../structure/event.js');
-const { InteractionType, ComponentType } = require('discord.js')
+const { InteractionType } = require('discord.js')
 
 module.exports = new Event('interactionCreate', async (client, interaction) => {
     if (interaction.user.bot) return;
@@ -8,28 +8,26 @@ module.exports = new Event('interactionCreate', async (client, interaction) => {
         case InteractionType.ApplicationCommand:
             const command = client.commands.find(cmd => cmd.name == interaction.commandName);
             const args = interaction.options;
-    
-            if (!command) return;
-    
-            command.execute(client, args, interaction);
+            
+            if (args.getSubcommand(false)) {
+                const subcommand = client.subcommands.find(cmd => cmd.name == args.getSubcommand(false));   
+                if (!subcommand) return;
+
+                await subcommand.execute(client, args, interaction);
+            } else {
+                const command = client.commands.find(cmd => cmd.name == interaction.commandName);
+                if (!command) return;
+
+                await command.execute(client, args, interaction);
+            }
             break;
 
         case InteractionType.MessageComponent:
-            if (interaction.componentType === ComponentType.Button) {
-                const button = client.buttons.get(interaction.customId);
+            const component = client.components.get(interaction.customId);
 
-                if (!button) return;
-        
-                button.execute(client, interaction);
-            }
-
-            if (interaction.componentType === ComponentType.StringSelect) {
-                const selectMenu = client.selectMenus.get(interaction.customId);
-
-                if (!selectMenu) return;
-        
-                selectMenu.execute(client, interaction);
-            }
+            if (!component) return;
+    
+            component.execute(client, interaction);
             break;
 
         case InteractionType.ModalSubmit:

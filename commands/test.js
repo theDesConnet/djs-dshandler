@@ -5,7 +5,7 @@ module.exports = new Command({
     name: "test",
     description: "Test command",
     slashCommandOptions: [],
-    permissions: "SEND_MESSAGES",
+    permissions: [Discord.PermissionFlagsBits.SendMessages],
     async execute(client, args, interaction) {
         const testButton = new Discord.ButtonBuilder()
             .setCustomId('testButton')

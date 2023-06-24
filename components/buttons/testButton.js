@@ -1,8 +1,9 @@
-const Button = require('../../structure/button.js');
+const Component = require('../../structure/component.js');
 const Discord = require('discord.js');
 
-module.exports = new Button({
-    buttonID: "testButton",
+module.exports = new Component({
+    componentID: "testButton",
+    componentType: Discord.ComponentType.Button,
     async execute(client, interaction) {
         const textInput = new Discord.TextInputBuilder()
         .setLabel('testTextInput')

@@ -7,12 +7,12 @@ const Client = require('./client.js');
  * @param {message.content.slice(config.prefix.length).trim().split(/ +/g)} args 
  * @param {Discord.CommandInteraction} interaction 
  */
-function ExecuteFuctions(client, args, interaction) { }
+async function ExecuteFuctions(client, args, interaction) { }
 
 //Класс команды
 class Command {
     /**
-     * @typedef {{name: string, description: string, permissions: Discord.PermissionString, slashCommandOptions: Discord.ApplicationCommandOption[] execute: ExecuteFuctions}} CommandOptions
+     * @typedef {{name: string, description: string, permissions: Discord.PermissionResolvable[], slashCommandOptions: Discord.ApplicationCommandOption[] execute: ExecuteFuctions}} CommandOptions
      * @param {CommandOptions} options
      */
     constructor(options) {
